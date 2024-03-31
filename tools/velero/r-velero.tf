@@ -57,13 +57,33 @@ resource "azurerm_storage_container" "velero" {
   container_access_type = "private"
 }
 
+# Create CSI snapshot class needed for CSI volume backups
+
+resource "kubernetes_manifest" "default_volumesnapshot" {
+  manifest = {
+    "apiVersion" = "snapshot.storage.k8s.io/v1"
+    "kind"       = "VolumeSnapshotClass"
+    "metadata" = {
+      "name"      = "default-velero-csi-snapshot"
+      "namespace" = kubernetes_namespace.velero[0].metadata[0].name
+      "labels" = {
+        "velero.io/csi-volumesnapshot-class" = "true"
+      }
+      "driver"         = "disk.csi.azure.com"
+      "deletionPolicy" = "Retain"
+    }
+  }
+}
+
 resource "helm_release" "velero" {
   count = var.enable_velero ? 1 : 0
   depends_on = [
     kubernetes_secret.velero,
     kubernetes_namespace.velero,
+    kubernetes_manifest.default_volumesnapshot,
     azurerm_storage_account.velero,
-  azurerm_storage_container.velero]
+    azurerm_storage_container.velero
+  ]
   name       = "velero"
   chart      = "velero"
   repository = var.velero_chart_repository
