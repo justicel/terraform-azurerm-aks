@@ -518,7 +518,7 @@ variable "velero_namespace" {
 variable "velero_chart_version" {
   description = "Velero helm chart version to use"
   type        = string
-  default     = "3.1.6"
+  default     = "3.2.0"
 }
 
 variable "velero_chart_repository" {
