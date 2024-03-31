@@ -65,7 +65,6 @@ resource "kubernetes_manifest" "default_volumesnapshot" {
     "kind"       = "VolumeSnapshotClass"
     "metadata" = {
       "name"      = "default-velero-csi-snapshot"
-      "namespace" = kubernetes_namespace.velero[0].metadata[0].name
       "labels" = {
         "velero.io/csi-volumesnapshot-class" = "true"
       }
