@@ -33,7 +33,7 @@ EOF
     "configuration.volumeSnapshotLocation.name"                 = "default"
     "credentials.existingSecret"                                = try(kubernetes_secret.velero[0].metadata[0].name, "")
     "credentials.useSecret"                                     = "true"
-    "deployRestic"                                              = "false"
+    "deployNodeAgent"                                           = "false"
     "env.AZURE_CREDENTIALS_FILE"                                = "/credentials"
     "metrics.enabled"                                           = "true"
     "rbac.create"                                               = "true"

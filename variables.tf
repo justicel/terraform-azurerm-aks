@@ -485,7 +485,7 @@ map(object({
   configuration.volumeSnapshotLocation.name                 = string
   credential.exstingSecret                                  = string
   credentials.useSecret                                     = string
-  deployRestic                                              = string
+  deployNodeAgent                                           = string
   env.AZURE_CREDENTIALS_FILE                                = string
   metrics.enabled                                           = string
   rbac.create                                               = string
