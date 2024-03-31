@@ -68,9 +68,9 @@ resource "kubernetes_manifest" "default_volumesnapshot" {
       "labels" = {
         "velero.io/csi-volumesnapshot-class" = "true"
       }
-      "driver"         = "disk.csi.azure.com"
-      "deletionPolicy" = "Retain"
     }
+    "driver"         = "disk.csi.azure.com"
+    "deletionPolicy" = "Retain"
   }
 }
 
