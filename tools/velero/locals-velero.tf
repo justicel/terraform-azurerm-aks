@@ -48,6 +48,10 @@ EOF
     "initContainers[0].image"                                   = "velero/velero-plugin-for-microsoft-azure:v1.1.1"
     "initContainers[0].volumeMounts[0].mountPath"               = "/target"
     "initContainers[0].volumeMounts[0].name"                    = "plugins"
+    "initContainers[1].name"                                    = "velero-plugin-for-csi"
+    "initContainers[1].image"                                   = "velero/velero-plugin-for-csi:v0.5.0"
+    "initContainers[1].volumeMounts[0].mountPath"               = "/target"
+    "initContainers[1].volumeMounts[0].name"                    = "plugins"
     "image.repository"                                          = "velero/velero"
     "image.pullPolicy"                                          = "IfNotPresent"
     "podAnnotations.aadpodidbinding"                            = local.velero_identity_name
