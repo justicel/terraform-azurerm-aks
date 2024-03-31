@@ -65,6 +65,7 @@ map(object({
   configuration.provider                                    = string
   configuration.volumeSnapshotLocation.config.resourceGroup = string
   configuration.volumeSnapshotLocation.name                 = string
+  configuration.features                                    = string
   credential.exstingSecret                                  = string
   credentials.useSecret                                     = string
   deployNodeAgent                                           = string

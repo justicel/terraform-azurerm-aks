@@ -31,6 +31,7 @@ EOF
     "configuration.provider"                                    = "azure"
     "configuration.volumeSnapshotLocation.config.resourceGroup" = try(var.aks_nodes_resource_group_name, "")
     "configuration.volumeSnapshotLocation.name"                 = "default"
+    "configuration.features"                                    = "EnableCSI"
     "credentials.existingSecret"                                = try(kubernetes_secret.velero[0].metadata[0].name, "")
     "credentials.useSecret"                                     = "true"
     "deployNodeAgent"                                           = "false"
