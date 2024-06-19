@@ -1,6 +1,6 @@
 
 resource "azurerm_role_assignment" "aks_uai_subnets_network_contributor" {
-  for_each = toset(var.nodes_subnet_id)
+  for_each = toset(var.vnet_id)
 
   scope                = each.key
   principal_id         = azurerm_user_assigned_identity.aks_user_assigned_identity.principal_id
