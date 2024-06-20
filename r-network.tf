@@ -1,6 +1,6 @@
 
 resource "azurerm_role_assignment" "aks_uai_subnets_network_contributor" {
-  scope                = var.vnet_id
+  scope                = data.azurerm_resource_group.default.id
   principal_id         = azurerm_user_assigned_identity.aks_user_assigned_identity.principal_id
   role_definition_name = "Network Contributor"
 }

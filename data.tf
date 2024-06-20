@@ -6,3 +6,7 @@ data "azurerm_virtual_network" "aks_vnet" {
   name                = reverse(split("/", var.vnet_id))[0]
   resource_group_name = split("/", var.vnet_id)[4]
 }
+
+data "azurerm_resource_group" "default" {
+  name = var.resource_group_name
+}
