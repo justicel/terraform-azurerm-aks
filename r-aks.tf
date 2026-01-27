@@ -39,6 +39,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     node_labels         = local.default_node_pool.node_labels
     scale_down_mode     = local.default_node_pool.scale_down_mode
     tags                = merge(local.default_tags, var.default_node_pool_tags)
+    upgrade_settings    = {}
   }
 
   identity {
