@@ -590,3 +590,9 @@ variable "appgw_private_ip" {
   type        = string
   default     = null
 }
+
+variable "defender_log_analytics_workspace_ids" {
+  description = "Log analytics workspace IDs for MS Defender"
+  type = list
+  default = null
+}

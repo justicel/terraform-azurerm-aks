@@ -116,6 +116,13 @@ resource "azurerm_kubernetes_cluster" "aks" {
       secret_rotation_interval = key_vault_secrets_provider.value.secret_rotation_interval
     }
   }
+ 
+  dynamic "microsoft_defender" {
+    for_each = toset(var.defender_log_analytics_workspace_ids)
+    content {
+     log_analytics_workspace_id = microsoft_defender.value
+    }
+  }
 
   depends_on = [
     azurerm_role_assignment.aks_uai_private_dns_zone_contributor,
