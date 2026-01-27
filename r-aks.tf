@@ -39,8 +39,6 @@ resource "azurerm_kubernetes_cluster" "aks" {
     node_labels         = local.default_node_pool.node_labels
     scale_down_mode     = local.default_node_pool.scale_down_mode
     tags                = merge(local.default_tags, var.default_node_pool_tags)
-    upgrade_settings    {
-    }
   }
 
   identity {
@@ -152,8 +150,6 @@ resource "azurerm_kubernetes_cluster_node_pool" "node_pools" {
   zones                  = local.nodes_pools[count.index].zones
   scale_down_mode        = local.nodes_pools[count.index].scale_down_mode
   tags                   = merge(local.default_tags, var.node_pool_tags)
-  upgrade_settings    {
-  }
 }
 
 # Allow user assigned identity to manage AKS items in MC_xxx RG
