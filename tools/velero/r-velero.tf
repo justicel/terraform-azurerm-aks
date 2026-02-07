@@ -70,7 +70,7 @@ resource "kubernetes_manifest" "default_volumesnapshot" {
       }
     }
     "driver"         = "disk.csi.azure.com"
-    "deletionPolicy" = "Retain"
+    "deletionPolicy" = "Delete"
   }
 }
 
